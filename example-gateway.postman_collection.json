@@ -1,0 +1,255 @@
+{
+  "info": {
+    "_postman_id": "e36fda12-1321-42cc-a38e-9de877b5a37f",
+    "name": "example channel service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "http://localhost:8080/ir/s001/a/v1",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-core-channel",
+            "value": "Teller",
+            "type": "text"
+          },
+          {
+            "key": "x-core-guid",
+            "value": "guid",
+            "type": "text"
+          },
+          {
+            "key": "x-core-uid",
+            "value": "uid",
+            "type": "text"
+          },
+          {
+            "key": "x-core-txid",
+            "value": "txid",
+            "type": "text"
+          },
+          {
+            "key": "x-core-timestamp",
+            "value": "2022-09-01T10:01:400480",
+            "type": "text"
+          },
+          {
+            "key": "x-core-msg-type",
+            "value": "msg-type",
+            "type": "text"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "zh-TW",
+            "type": "text"
+          },
+          {
+            "key": "Accept-Charset",
+            "value": "utf-8",
+            "type": "text"
+          },
+          {
+            "key": "x-core-traceid",
+            "value": "123123",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\t\n    \"transId\": \"S031\",\n    \"prefix\": \"I\",\n    \"branchNo\": \"401\",\n    \"branchId\": \"401\",\n    \"trmId\": \"AA1S\",\n    \"ipAddr\": \"10.32.193.164\",\n    \"opId\": \"AA1S\",\n    \"empId\": 123456,\n    \"auxOpId\": \"AA2S\",\n    \"auxEmpId\": \"234567\",\n    \"transactionId\": \"transactionId\",\n    \"txId\": \"234567\",\n    \"sourceId\": \"234567\",\n    \"clientIp\": \"123.123.1.1\",\n\t\"clientRequest\":{\n        \"amount\": 100,\n        \"contact\": \"contact@mail.com\",\n        \"last-name\": \"lee\",\n        \"first-name\": \"andy\"\n\t}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/fx/ir/s001/a/v1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "fx",
+            "ir",
+            "s001",
+            "a",
+            "v1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "130G",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-core-channel",
+            "value": "CorpWeb",
+            "type": "text"
+          },
+          {
+            "key": "x-core-guid",
+            "value": "guid",
+            "type": "text"
+          },
+          {
+            "key": "x-core-uid",
+            "value": "uid",
+            "type": "text"
+          },
+          {
+            "key": "x-core-txid",
+            "value": "FCB91103G",
+            "type": "text"
+          },
+          {
+            "key": "x-core-timestamp",
+            "value": "2022-09-01T10:01:400480",
+            "type": "text"
+          },
+          {
+            "key": "x-core-msg-type",
+            "value": "msg-type",
+            "type": "text"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "zh-TW",
+            "type": "text"
+          },
+          {
+            "key": "Accept-Charset",
+            "value": "utf-8",
+            "type": "text"
+          },
+          {
+            "key": "x-core-traceid",
+            "value": "x-core-traceid",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"correlationId\": \"correlationId\",\n    \"message\": \"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?><!DOCTYPE FCB91103G><XML><Header><TxID>FCB91103G</TxID><SystemKey>FCB91</SystemKey><TxSeqNo>20040408000021</TxSeqNo><MsgSeqNo>00001</MsgSeqNo><CltTimeStamp>2004-04-0809:25:00.000</CltTimeStamp><CustID>00050523220</CustID><UserID>0001</UserID><AcctNo>04810345676</AcctNo><MsgDirection>RQ</MsgDirection></Header><TxRq><firstName>andy</firstName><lastName>lee</lastName><contact>James@mail.com</contact></TxRq></XML>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/fx/ir/message/process/v1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "fx",
+            "ir",
+            "message",
+            "process",
+            "v1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "103U",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-core-channel",
+            "value": "CorpWeb",
+            "type": "text"
+          },
+          {
+            "key": "x-core-guid",
+            "value": "guid",
+            "type": "text"
+          },
+          {
+            "key": "x-core-uid",
+            "value": "uid",
+            "type": "text"
+          },
+          {
+            "key": "x-core-txid",
+            "value": "FCB91103G",
+            "type": "text"
+          },
+          {
+            "key": "x-core-timestamp",
+            "value": "2022-09-01T10:01:400480",
+            "type": "text"
+          },
+          {
+            "key": "x-core-msg-type",
+            "value": "msg-type",
+            "type": "text"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "zh-TW",
+            "type": "text"
+          },
+          {
+            "key": "Accept-Charset",
+            "value": "utf-8",
+            "type": "text"
+          },
+          {
+            "key": "x-core-traceid",
+            "value": "x-core-traceid",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"correlationId\": \"correlationId\",\n    \"message\": \"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?><!DOCTYPE FCB91103U><XML><Header><TxID>FCB91103U</TxID><SystemKey>FCB01</SystemKey><TxSeqNo>20040408000099</TxSeqNo><MsgSeqNo>00003</MsgSeqNo><CltTimeStamp>2004-04-0809:25:00.000</CltTimeStamp><CustID>00050523220</CustID><UserID>0001</UserID><AcctNo>04810345676</AcctNo><MsgDirection>RQ</MsgDirection></Header><TxRq><amount>200</amount></TxRq></XML>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/fx/ir/message/process/v1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "fx",
+            "ir",
+            "message",
+            "process",
+            "v1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

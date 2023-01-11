@@ -1,0 +1,385 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Example Channel API",
+    "description": "For example channel service",
+    "version": "API 1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Mainframe",
+      "description": "Send Message to mainframe"
+    }
+  ],
+  "paths": {
+    "/esb/message/send/v1": {
+      "post": {
+        "tags": [
+          "Mainframe"
+        ],
+        "summary": "Send Message",
+        "description": "Send Message Async",
+        "operationId": "sendMessage",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestWrapperSendMessageRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseWrapperSendMessageResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestWrapper"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation Fail",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestWrapper"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/startup": {
+      "get": {
+        "tags": [
+          "warmup-controller"
+        ],
+        "operationId": "startup",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/readiness": {
+      "get": {
+        "tags": [
+          "warmup-controller"
+        ],
+        "operationId": "readiness",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/liveness": {
+      "get": {
+        "tags": [
+          "warmup-controller"
+        ],
+        "operationId": "liveness",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RequestWrapperSendMessageRequest": {
+        "required": [
+          "businessDate",
+          "clientRequest",
+          "empId",
+          "requestTimeStamp",
+          "terminalId",
+          "txId",
+          "txSeqNo"
+        ],
+        "type": "object",
+        "properties": {
+          "transactionId": {
+            "type": "string",
+            "description": "發送方自編之uuid",
+            "example": "192.168.11.10"
+          },
+          "messageId": {
+            "type": "string",
+            "description": "MQ必須填入",
+            "example": "messageId"
+          },
+          "correlationId": {
+            "type": "string",
+            "description": "MQ必須填入",
+            "example": "correlationId"
+          },
+          "clientIp": {
+            "type": "string",
+            "description": "用戶端IP",
+            "example": "192.168.11.10"
+          },
+          "branchNo": {
+            "type": "string",
+            "description": "發送分行代號",
+            "example": "401"
+          },
+          "branchId": {
+            "type": "string",
+            "description": "發送分行字軌",
+            "example": "401"
+          },
+          "opId": {
+            "type": "string",
+            "description": "操作員 ID",
+            "example": "123456"
+          },
+          "terminalId": {
+            "type": "string",
+            "description": "設備/端末機 ID",
+            "example": "AA2S"
+          },
+          "empId": {
+            "type": "string",
+            "description": "執行交易人員",
+            "example": "123456"
+          },
+          "authEmpId": {
+            "type": "string",
+            "description": "授權交易人員",
+            "example": "234567"
+          },
+          "txId": {
+            "type": "string",
+            "description": "交易代號",
+            "example": "FCB92FR12"
+          },
+          "prefix": {
+            "type": "string",
+            "description": "功能",
+            "example": "A"
+          },
+          "txSeqNo": {
+            "type": "string",
+            "description": "交易序號",
+            "example": "2022090100000001"
+          },
+          "businessDate": {
+            "type": "string",
+            "description": "營業日(西元年)",
+            "example": "20220901"
+          },
+          "requestTimeStamp": {
+            "type": "string",
+            "description": "請求時間(UTC)",
+            "example": "2022-09-01T10:01:400480"
+          },
+          "clientRequest": {
+            "$ref": "#/components/schemas/SendMessageRequest"
+          }
+        }
+      },
+      "SendMessageRequest": {
+        "required": [
+          "correlationId",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string",
+            "description": "CorrelationId",
+            "example": "FCB112022100717111300001"
+          },
+          "message": {
+            "type": "string",
+            "description": "電文",
+            "example": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE FCB91103G><XML><Header><TxID>FCB91103G</TxID><SystemKey>FCB38</SystemKey><TxSeqNo>20040408000021</TxSeqNo><MsgSeqNo>00001</MsgSeqNo><CltTimeStamp>2004-04-0809:25:00.000</CltTimeStamp><CustID>00050523220</CustID><UserID>0001</UserID><AcctNo>04810345676</AcctNo><MsgDirection>RQ</MsgDirection></Header><TxRq>….</TxRq></XML>"
+          }
+        }
+      },
+      "RequestBody": {
+        "type": "object"
+      },
+      "RequestWrapper": {
+        "required": [
+          "businessDate",
+          "clientRequest",
+          "empId",
+          "requestTimeStamp",
+          "terminalId",
+          "txId",
+          "txSeqNo"
+        ],
+        "type": "object",
+        "properties": {
+          "transactionId": {
+            "type": "string",
+            "description": "發送方自編之uuid",
+            "example": "192.168.11.10"
+          },
+          "messageId": {
+            "type": "string",
+            "description": "MQ必須填入",
+            "example": "messageId"
+          },
+          "correlationId": {
+            "type": "string",
+            "description": "MQ必須填入",
+            "example": "correlationId"
+          },
+          "clientIp": {
+            "type": "string",
+            "description": "用戶端IP",
+            "example": "192.168.11.10"
+          },
+          "branchNo": {
+            "type": "string",
+            "description": "發送分行代號",
+            "example": "401"
+          },
+          "branchId": {
+            "type": "string",
+            "description": "發送分行字軌",
+            "example": "401"
+          },
+          "opId": {
+            "type": "string",
+            "description": "操作員 ID",
+            "example": "123456"
+          },
+          "terminalId": {
+            "type": "string",
+            "description": "設備/端末機 ID",
+            "example": "AA2S"
+          },
+          "empId": {
+            "type": "string",
+            "description": "執行交易人員",
+            "example": "123456"
+          },
+          "authEmpId": {
+            "type": "string",
+            "description": "授權交易人員",
+            "example": "234567"
+          },
+          "txId": {
+            "type": "string",
+            "description": "交易代號",
+            "example": "FCB92FR12"
+          },
+          "prefix": {
+            "type": "string",
+            "description": "功能",
+            "example": "A"
+          },
+          "txSeqNo": {
+            "type": "string",
+            "description": "交易序號",
+            "example": "2022090100000001"
+          },
+          "businessDate": {
+            "type": "string",
+            "description": "營業日(西元年)",
+            "example": "20220901"
+          },
+          "requestTimeStamp": {
+            "type": "string",
+            "description": "請求時間(UTC)",
+            "example": "2022-09-01T10:01:400480"
+          },
+          "clientRequest": {
+            "$ref": "#/components/schemas/RequestBody"
+          }
+        }
+      },
+      "ResponseWrapperSendMessageResponse": {
+        "type": "object",
+        "properties": {
+          "responseTimeStamp": {
+            "type": "string",
+            "description": "回應時間(UTC)",
+            "example": "2022-09-01T10:01:400480"
+          },
+          "statusCode": {
+            "type": "string",
+            "description": "錯誤代碼,狀態碼",
+            "example": "E2201"
+          },
+          "statusMsg": {
+            "type": "string",
+            "description": "錯誤代碼對應的錯誤訊息(i18n)含應用服務的額外訊息",
+            "example": "驗證啟用碼失敗"
+          },
+          "clientResponse": {
+            "$ref": "#/components/schemas/SendMessageResponse"
+          }
+        }
+      },
+      "SendMessageResponse": {
+        "required": [
+          "correlationId",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string",
+            "description": "CorrelationId",
+            "example": "FCB112022100717111300001"
+          },
+          "message": {
+            "type": "string",
+            "description": "電文",
+            "example": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE FCB91103G><XML><Header><TxID>FCB91103G</TxID><SystemKey>FCB38</SystemKey><TxSeqNo>20040408000021</TxSeqNo><MsgSeqNo>00001</MsgSeqNo><CltTimeStamp>2004-04-0809:25:00.000</CltTimeStamp><CustID>00050523220</CustID><UserID>0001</UserID><AcctNo>04810345676</AcctNo><MsgDirection>RQ</MsgDirection></Header><TxRq>….</TxRq></XML>"
+          }
+        }
+      }
+    }
+  }
+}

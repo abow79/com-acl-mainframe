@@ -1,0 +1,68 @@
+server:
+  port: 8082
+  shutdown: graceful
+  error:
+    whitelabel:
+      enabled: false
+
+  compression:
+    enabled: true
+    min-response-size: 256
+    mime-types: text/html,text/xml,text/plain,application/json,application/xml,text/css,application/javascript,image/svg+xml
+
+service:
+  length:
+    system-type: 3
+    service-name: 2
+    error-type: 1
+    error-code: 4
+  information:
+    system-type: COM
+    service-name: MF
+
+spring:
+  application:
+    name: com-acl-mainframe
+  lifecycle:
+    timeout-per-shutdown-phase: 60s
+
+  ## enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+  main:
+    allow-bean-definition-overriding: true
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+      write-date-timestamps-as-nanoseconds: false
+      fail-on-empty-beans: false
+
+  mvc:
+    throw-exception-if-no-handler-found: true
+    static-path-pattern: /static
+  resources:
+    add-mappings: false
+
+feign:
+  client:
+    config:
+      channel:
+        baseUrl: http://localhost:8081
+        connectTimeout: 5000
+        readTimeout: 30000
+
+ibm:
+  mq:
+    mockListener: false
+      queueManager: ESBQM2
+      channel: forfxc
+      connName: 10.14.88.52(1415)
+      user: admin
+      password: passw0rd
+      queue:
+        uploadTxRq: FXC.ESB.RQ1
+        uploadTxRs: ESB.FXC.RS1
+#      downloadTxRq: ESB.LOC.RQ3
+#      downloadTxRs: LOC.ESB.RS3
+
+logging:
+  config: classpath:logback-default.xml

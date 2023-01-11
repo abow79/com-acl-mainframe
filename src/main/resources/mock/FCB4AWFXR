@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FCB4AWFXR>
+<XML>
+	<Header>
+		<TxID>FCB4AWFXR</TxID>
+		<SystemKey>FCB4A</SystemKey>
+		<TxSeqNo>20040408000021</TxSeqNo>
+		<MsgSeqNo>00001</MsgSeqNo>
+		<CltTimeStamp>2004-04-0809:25:00.000</CltTimeStamp>
+		<CustID>00050523220</CustID>
+		<UserID>0001</UserID>
+		<AcctNo>04810345676</AcctNo>
+		<MsgDirection>RS</MsgDirection>
+		<StatusCode>04810345676</StatusCode>
+		<StatusDesc>RS</StatusDesc>
+	</Header>
+	<TxRs>
+		<currencyCode>01</currencyCode>
+		<spotBuyRate>30.86</spotBuyRate>
+		<spotSellRate>30.96</spotSellRate>
+		<costBuyRate>30.66</costBuyRate>
+        <costSellRate>30.56</costSellRate>
+        <cashBuyRate>31.06</cashBuyRate>
+        <cashSellRate>31.16</cashSellRate>
+        <cashCostBuyRate>30.46</cashCostBuyRate>
+        <cashCostSellRate>30.56</cashCostSellRate>
+        <largeBuyRate>30.26</largeBuyRate>
+        <largeSellRate>30.36</largeSellRate>
+        <largeCostBuyRate>39.26</largeCostBuyRate>
+        <largeCostSellRate>39.36</largeCostSellRate>
+        <bidCurrencyCode>11</bidCurrencyCode>
+	</TxRs>
+</XML>

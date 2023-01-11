@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE CallTfxrR15>
+<XML>
+	<Header>
+		<TxID>CallTfxrR15</TxID>
+		<SystemKey>FCB4A</SystemKey>
+		<TxSeqNo>20040408000021</TxSeqNo>
+		<MsgSeqNo>00001</MsgSeqNo>
+		<CltTimeStamp>2004-04-0809:25:00.000</CltTimeStamp>
+		<CustID>00050523220</CustID>
+		<UserID>0001</UserID>
+		<AcctNo>04810345676</AcctNo>
+		<MsgDirection>RQ</MsgDirection>
+	</Header>
+	<TxRs>
+		<cpotBoughRate1>40</cpotBoughRate1>
+		<cpotBoughRate2>60</cpotBoughRate2>
+		<costRate>50</costRate>
+		<costRateLarge>20</costRateLarge>
+	</TxRs>
+</XML>
